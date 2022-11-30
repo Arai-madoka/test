@@ -4,7 +4,7 @@
   </head>
   <body>
     <a-scene>
-       <a-entity id="ctlL" laser-controls="hand: left" raycaster="objects: .collidable; far: 2" controller></a-entity>
+       <a-entity id="ctlL" laser-controls="hand: left" raycaster="objects: .collidable; far: 2" vr-controller></a-entity>
        <a-entity id="ctlR" laser-controls="hand: right" raycaster="objects: .collidable; far: 2" vr-controller></a-entity>
 
       // コントローラーの操作状況が分かるようにカメラにテキストを配置
@@ -30,6 +30,13 @@
 
           // コントローラーのグリップボタンが押されているかを表現する
           el.grip = false;
+          
+          el.addEventListener('triggerdown', function (event) {
+            txt.setAttribute("value", "Trigger down");
+          });
+          el.addEventListener('triggerup', function (event) {
+            txt.setAttribute("value", "Trigger up");
+          });
 
           el.addEventListener('gripdown', function (event) {
             txt.setAttribute("value", "Grip down");
